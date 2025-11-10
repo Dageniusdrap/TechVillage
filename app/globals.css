@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.75rem;
+}
+
+html { scroll-behavior: smooth; }
+
+.container-px { @apply px-4 md:px-8 lg:px-12; }
+.section { @apply container-px mx-auto max-w-6xl; }
+.section-pt { @apply pt-10 md:pt-16 lg:pt-24; }
+.section-pb { @apply pb-10 md:pb-16 lg:pb-24; }
+.btn { @apply inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors; }
+.btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700; }
+.btn-outline { @apply border border-slate-300 hover:bg-slate-50; }
+.card { @apply rounded-2xl border border-slate-200 bg-white/80 shadow-sm backdrop-blur; }
+
+/* Simple reveal animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; animation: fadeUp 600ms ease forwards; }
+.reveal-1 { animation-delay: 80ms; }
+.reveal-2 { animation-delay: 160ms; }
+.reveal-3 { animation-delay: 240ms; }
+.reveal-4 { animation-delay: 320ms; }
