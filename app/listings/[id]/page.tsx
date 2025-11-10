@@ -11,8 +11,9 @@ export function generateStaticParams() {
   return LISTINGS.map((l) => ({ id: l.id }));
 }
 
-export default function ListingPage({ params }: { params: { id: string } }) {
-  const listing = LISTINGS.find((l) => l.id === params.id);
+export default async function ListingPage({ params }: { params: Promise<{ id: string }> }) { 
+  const { id } = await params;
+  const listing = LISTINGS.find((l) => l.id === id);
   if (!listing) return notFound();
 
   const images = listing.images && listing.images.length ? listing.images : [listing.src];

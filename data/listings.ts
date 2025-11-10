@@ -3,7 +3,8 @@ export type Listing = {
   title: string;
   src: string; // primary image
   images?: string[];
-  price: number; // in IDR
+  videos?: string[];
+  price: number; // in UGX
   booked: boolean;
   location: string;
   distanceKm: number;

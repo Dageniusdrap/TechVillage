@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle, Phone, MapPin, Home, Shield, Leaf, CreditCard, Wallet, DollarSign, Plane } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import ListingsGrid from "@/components/ListingsGrid";
 import { LISTINGS } from "@/data/listings";
 import ScheduleCallForm from "@/components/ScheduleCallForm";
@@ -63,7 +64,9 @@ export default function Page() {
       {/* Gallery */}
       <section id="gallery" className="section section-pb">
         <h2 className="mb-4 text-2xl font-semibold">Available Units</h2>
-        <ListingsGrid listings={LISTINGS} />
+        <Suspense fallback={<div className="text-sm text-slate-600">Loading listings…</div>}>
+          <ListingsGrid listings={LISTINGS} />
+        </Suspense>
       </section>
 
       {/* CTA */}
@@ -81,7 +84,6 @@ export default function Page() {
           <div className="space-y-4">
             <ContactForm />
             {/* Optional call scheduling form (Twilio-ready) */}
-            {/* @ts-expect-error Server Component importing Client Component via dynamic string is okay when compiled */}
             <ScheduleCallForm listingId={undefined} />
           </div>
         </div>

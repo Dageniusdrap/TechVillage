@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
+import { LISTINGS } from "@/data/listings";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const staticRoutes: MetadataRoute.Sitemap = ["/"].map((route) => ({
     url: `${base}${route}`,
@@ -8,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 1,
   }));
-  const listingRoutes: MetadataRoute.Sitemap = (await import("@/data/listings")).LISTINGS.map((l) => ({
+  const listingRoutes: MetadataRoute.Sitemap = LISTINGS.map((l) => ({
     url: `${base}/listings/${l.id}`,
     lastModified: new Date(),
     changeFrequency: "weekly",

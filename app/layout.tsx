@@ -43,7 +43,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         {children}
         {/* Optional Voice Agent widget (Vapi) */}
         {/* Will render only if NEXT_PUBLIC_VAPI_PUBLIC_TOKEN is set */}
-        {/* @ts-expect-error Server Component importing Client Component via dynamic string is okay when compiled */}
         <VoiceAgent />
         <Script id="ld-org" type="application/ld+json" strategy="afterInteractive">{`
           {
